@@ -12,7 +12,9 @@ dataTime = df['Date']
 
 dataTimeArr = np.array(dataTime)
 
+print("")
 print(dataTimeArr)
+print("")
 
 def dateArr(S):
     day = S[3:5]
@@ -24,33 +26,6 @@ def dateArr(S):
     #1908
     return np.array([int(day),int(month),int(year)])
 
-#17/09/1908
-#15/10/1908
-
-#-2/1/0
-#quantos meses passaram?
-
-#days negativo entao tirar um ao mes
-
-#1 - 1 = 0 meses passaram
-
-
-#12/07/1912
-
-#-5/-2/4
-#quantos meses passaram? 4*12 = 36
-#-3 = 33 meses
-
-#17/09/1912 : 36 meses
-#17/07/1912 : 34 meses
-#16/07/1912: 33.9.. ~ 33 meses (floor)
-
-
-    
-
-
-#date("09/17/1908")
-
 dataTRef = np.array([17,9,1908],)
 list_months = np.array([])
 #index = 0
@@ -61,19 +36,16 @@ for date in dataTimeArr:
     if (arrDif[0]<0):
         months_passed-=1
     list_months = np.append(list_months,months_passed)
-    #index+=1
 
+print("")
 print(list_months)
-print(len(list_months))
+print("")
 
+list_counts = np.zeros(1209)
 
+for crash in list_months:
+  list_counts[int(crash)]+=1
 
-list_years = np.floor(list_months/12)
-
-plt.hist(list_months)
+print(list_counts)
+plt.plot(list_counts)
 plt.show()
-
-plt.hist(list_years)
-
-
-
